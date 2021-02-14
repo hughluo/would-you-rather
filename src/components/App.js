@@ -1,10 +1,29 @@
-function App() {
-	return (
-		<div className="App">
-			<header className="App-header" />
-			Would You Rather
-		</div>
-	);
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import LoadingBar from 'react-redux-loading';
+
+import { handleInitialData } from '../actions/shared';
+
+class App extends Component {
+	componentDidMount() {
+		this.props.dispatch(handleInitialData());
+	}
+	render() {
+		return (
+			<Router>
+				<Fragment>
+					<LoadingBar />
+				</Fragment>
+			</Router>
+		);
+	}
 }
 
-export default App;
+function mapStateToProps({ authedUser }) {
+	return {
+		loading: authedUser === null
+	};
+}
+
+export default connect(mapStateToProps)(App);
