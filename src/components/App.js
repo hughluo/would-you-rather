@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
 
+import QuestionList from './QuestionList';
+
 import { handleInitialData } from '../actions/shared';
 
 class App extends Component {
@@ -14,6 +16,7 @@ class App extends Component {
 			<Router>
 				<Fragment>
 					<LoadingBar />
+					<QuestionList />
 				</Fragment>
 			</Router>
 		);
