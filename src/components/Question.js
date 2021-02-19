@@ -1,7 +1,33 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-function Question({ question }) {
-	return <div>{JSON.stringify(question)}</div>;
+class Question extends React.Component {
+	render() {
+		const { question, author } = this.props;
+		return (
+			<div>
+				<h2> {author['name']} asked: Would you rather...</h2>
+				<div>
+					<input type="radio" name="option" value="optionOne" />
+					<label for="huey">{question['optionOne']['text']}</label>
+				</div>
+
+				<div>
+					<input type="radio" name="option" value="optionTwo" />
+					<label for="dewey">{question['optionTwo']['text']}</label>
+				</div>
+				<button> View Poll</button>
+			</div>
+		);
+	}
 }
 
-export default Question;
+function mapStateToProps({ users, authedUser }, { question }) {
+	return {
+		author: users[question['author']],
+		authedUser,
+		question
+	};
+}
+
+export default connect(mapStateToProps)(Question);
