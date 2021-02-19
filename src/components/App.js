@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import QuestionList from './QuestionList';
 
@@ -16,7 +17,9 @@ class App extends Component {
 			<Router>
 				<Fragment>
 					<LoadingBar />
-					<QuestionList />
+					<div>
+						<Route path={'/'} exact component={QuestionList} />
+					</div>
 				</Fragment>
 			</Router>
 		);
