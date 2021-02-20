@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 function Question({ question, author }) {
 	return (
@@ -14,7 +16,9 @@ function Question({ question, author }) {
 				<input type="radio" name="option" value="optionTwo" />
 				<label for="dewey">{question['optionTwo']['text']}</label>
 			</div>
-			<button> View Poll</button>
+			<Link to={`/questions/${question['id']}`}>
+				<Button> View Poll</Button>
+			</Link>
 		</div>
 	);
 }

@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import QuestionList from './QuestionList';
-
 import { handleInitialData } from '../actions/shared';
+
+import QuestionList from './QuestionList';
+import QuestionPoll from './QuestionPoll';
 
 class App extends Component {
 	componentDidMount() {
@@ -18,7 +19,10 @@ class App extends Component {
 				<Fragment>
 					<LoadingBar />
 					<div>
-						<Route path={'/'} exact component={QuestionList} />
+						<Switch>
+							<Route path={'/'} exact component={QuestionList} />
+							<Route path={'/questions/:question_id'} component={QuestionPoll} />
+						</Switch>
 					</div>
 				</Fragment>
 			</Router>
