@@ -21,19 +21,25 @@ function Question({ question, author, loading }) {
 				<div className="card-content">
 					<div className="media">
 						<div className="media-left">
-							<figure className="image is-48x48">
-								<img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image" />
+							<figure className="image is-96x96">
+								<img src={author['avatarURL']} alt="Placeholder image" />
 							</figure>
 						</div>
 						<div className="media-content">
-							<p className="title is-4">John Smith</p>
-							<p className="subtitle is-6">@johnsmith</p>
+							<p className="title is-4">{author['name']}</p>
+							<p className="subtitle is-6" style={{ fontSize: '80%' }}>{`@${author['id']}`}</p>
 						</div>
 						<div className="content">
-							<span> {author['name']} asked: Would you rather...</span>
-							<Link to={`/questions/${question['id']}`}>
-								<button> View Poll</button>
-							</Link>
+							<span>{question['optionOne']['text'].substring(0, 5)}...</span>
+							<br />
+							<span>or</span>
+							<br />
+							<span>{question['optionTwo']['text'].substring(0, 5)}</span>
+							<div>
+								<Link to={`/questions/${question['id']}`}>
+									<button> View Poll</button>
+								</Link>
+							</div>
 						</div>
 					</div>
 				</div>
