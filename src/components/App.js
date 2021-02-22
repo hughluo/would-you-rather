@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { handleInitialData } from '../actions/shared';
 
