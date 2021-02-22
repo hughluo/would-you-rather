@@ -1,16 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Nav() {
 	return (
 		<div className="tabs is-centered">
 			<ul>
 				<li className="is-active">
-					<a>
+					<Link to="/" style={{ textDecoration: 'none' }}>
 						<span className="icon is-small">
 							<i className="fas fa-image" aria-hidden="true" />
 						</span>
-						<span>Pictures</span>
-					</a>
+						<span>Questions</span>
+					</Link>
 				</li>
 				<li>
 					<a>
