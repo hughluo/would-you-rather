@@ -31,12 +31,12 @@ function QuestionPoll({ users, questions, loading }) {
 			<h2> {author['name']} asks: Would you rather...</h2>
 			<div>
 				<input type="radio" name="option" value="optionOne" />
-				<label for="huey">{question['optionOne']['text']}</label>
+				<label>{question['optionOne']['text']}</label>
 			</div>
 
 			<div>
 				<input type="radio" name="option" value="optionTwo" />
-				<label for="dewey">{question['optionTwo']['text']}</label>
+				<label>{question['optionTwo']['text']}</label>
 			</div>
 		</div>
 	);
