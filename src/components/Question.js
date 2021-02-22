@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
-function Question({ question, author }) {
+import Loading from './Loading';
+
+function Question({ question, author, loading }) {
+	if (loading) {
+		return (
+			<div>
+				<Loading />
+			</div>
+		);
+	}
+	if (question === null || author === null) {
+		return <p>This question doesn't exist</p>;
+	}
 	return (
 		<div>
 			<h2> {author['name']} asked: Would you rather...</h2>
@@ -27,7 +39,8 @@ function mapStateToProps({ users, authedUser }, { question }) {
 	return {
 		author: users[question['author']],
 		authedUser,
-		question
+		question,
+		loading: authedUser === null
 	};
 }
 

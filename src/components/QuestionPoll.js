@@ -3,8 +3,19 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
 
-function QuestionPoll({ users, questions }) {
+import Loading from './Loading';
+
+function QuestionPoll({ users, questions, loading }) {
 	const { question_id } = useParams();
+
+	if (loading) {
+		return <Loading />;
+	}
+
+	if (!(question_id in questions)) {
+		return <p>Question does not exist</p>;
+	}
+
 	console.log(`useParam: ${question_id}`);
 	console.log(`questions: ${JSON.stringify(questions)}`);
 
@@ -32,10 +43,12 @@ function QuestionPoll({ users, questions }) {
 	);
 }
 
-function mapStateToProps({ users, questions }) {
+function mapStateToProps({ authedUser, users, questions }) {
 	return {
+		authedUser,
 		users,
-		questions
+		questions,
+		loading: authedUser === null
 	};
 }
 
