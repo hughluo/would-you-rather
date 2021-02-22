@@ -8,6 +8,7 @@ import { handleInitialData } from '../actions/shared';
 
 import QuestionList from './QuestionList';
 import QuestionPoll from './QuestionPoll';
+import Nav from './Nav';
 
 class App extends Component {
 	componentDidMount() {
@@ -18,6 +19,7 @@ class App extends Component {
 			<Router>
 				<Fragment>
 					<LoadingBar />
+					<Nav />
 					<div>
 						<Switch>
 							<Route path={'/'} exact component={QuestionList} />
