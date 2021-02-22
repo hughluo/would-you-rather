@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 
 import Loading from './Loading';
 
@@ -29,7 +28,7 @@ function Question({ question, author, loading }) {
 				<label for="dewey">{question['optionTwo']['text']}</label>
 			</div>
 			<Link to={`/questions/${question['id']}`}>
-				<Button> View Poll</Button>
+				<button> View Poll</button>
 			</Link>
 		</div>
 	);
