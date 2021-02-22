@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Image from 'react-bootstrap/Image';
 
 import Loading from './Loading';
 
@@ -27,7 +26,7 @@ function QuestionPoll({ users, questions, loading }) {
 		<div>
 			<h1>QuestionPoll</h1>
 			<div className="avatar">
-				<Image src={author.avatarURL} />
+				<img src={author.avatarURL} alt="avatar" />
 			</div>
 			<h2> {author['name']} asks: Would you rather...</h2>
 			<div>
