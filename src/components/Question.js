@@ -20,12 +20,12 @@ function Question({ question, author, loading }) {
 			<h2> {author['name']} asked: Would you rather...</h2>
 			<div>
 				<input type="radio" name="option" value="optionOne" />
-				<label for="huey">{question['optionOne']['text']}</label>
+				<label>{question['optionOne']['text']}</label>
 			</div>
 
 			<div>
 				<input type="radio" name="option" value="optionTwo" />
-				<label for="dewey">{question['optionTwo']['text']}</label>
+				<label>{question['optionTwo']['text']}</label>
 			</div>
 			<Link to={`/questions/${question['id']}`}>
 				<button> View Poll</button>
