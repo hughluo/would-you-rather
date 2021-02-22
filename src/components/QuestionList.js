@@ -16,7 +16,6 @@ function QuestionList({ authedUser, questions, categorisedQuesitons }) {
 			<div className="columns">
 				<div className="column is-three-fifths is-offset-one-fifth">
 					<ToggleQuestionList toggleValue={toggleValue} setToggleValue={setToggleValue} />
-					<h2>QuestionList</h2>
 					<ul>
 						{Object.keys(toggleValue === UNANSWERED ? unAnsweredQuestions : answeredQuestions).map((id) => (
 							<li key={id}>

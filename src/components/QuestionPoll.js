@@ -18,16 +18,8 @@ function QuestionPoll({ users, questions, loading }) {
 		return <p>Question does not exist</p>;
 	}
 
-	console.log(`useParam: ${question_id}`);
-	console.log(`questions: ${JSON.stringify(questions)}`);
-
 	const question = questions[question_id];
-	console.log(`question: ${question}`);
 	const author = users[question['author']];
-
-	// const handleRadioChange = (e) => {
-	// 	setRadioValue(e.target.value);
-	// };
 
 	return (
 		<div className="card" style={{ padding: '20px' }}>
