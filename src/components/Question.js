@@ -16,20 +16,28 @@ function Question({ question, author, loading }) {
 		return <p>This question doesn't exist</p>;
 	}
 	return (
-		<div>
-			<h2> {author['name']} asked: Would you rather...</h2>
-			<div>
-				<input type="radio" name="option" value="optionOne" />
-				<label>{question['optionOne']['text']}</label>
+		<div className="box">
+			<div className="card">
+				<div className="card-content">
+					<div className="media">
+						<div className="media-left">
+							<figure className="image is-48x48">
+								<img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image" />
+							</figure>
+						</div>
+						<div className="media-content">
+							<p className="title is-4">John Smith</p>
+							<p className="subtitle is-6">@johnsmith</p>
+						</div>
+						<div className="content">
+							<span> {author['name']} asked: Would you rather...</span>
+							<Link to={`/questions/${question['id']}`}>
+								<button> View Poll</button>
+							</Link>
+						</div>
+					</div>
+				</div>
 			</div>
-
-			<div>
-				<input type="radio" name="option" value="optionTwo" />
-				<label>{question['optionTwo']['text']}</label>
-			</div>
-			<Link to={`/questions/${question['id']}`}>
-				<button> View Poll</button>
-			</Link>
 		</div>
 	);
 }
