@@ -18,8 +18,11 @@ class App extends Component {
 		return (
 			<Router>
 				<Fragment>
+					<LoadingBar
+						className="nes-progress is-primary"
+						style={{ backgroundColor: 'red', height: '2px', zIndex: 999, position: 'absolute' }}
+					/>
 					<div className="container">
-						<LoadingBar />
 						<Navbar />
 						<Tab />
 						<div>
