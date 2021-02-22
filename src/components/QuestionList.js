@@ -14,20 +14,16 @@ function QuestionList({ authedUser, questions, categorisedQuesitons }) {
 	return (
 		<div className="container">
 			<div className="columns">
-				<div className="column is-half is-offset-one-quarter">
-					<div className="container is-max-widescreen">
-						<ToggleQuestionList toggleValue={toggleValue} setToggleValue={setToggleValue} />
-						<h2>QuestionList</h2>
-						<ul>
-							{Object.keys(
-								toggleValue === UNANSWERED ? unAnsweredQuestions : answeredQuestions
-							).map((id) => (
-								<li key={id}>
-									<Question question={questions[id]} />
-								</li>
-							))}
-						</ul>
-					</div>
+				<div className="column is-three-fifths is-offset-one-fifth">
+					<ToggleQuestionList toggleValue={toggleValue} setToggleValue={setToggleValue} />
+					<h2>QuestionList</h2>
+					<ul>
+						{Object.keys(toggleValue === UNANSWERED ? unAnsweredQuestions : answeredQuestions).map((id) => (
+							<li key={id}>
+								<Question question={questions[id]} />
+							</li>
+						))}
+					</ul>
 				</div>
 			</div>
 		</div>
