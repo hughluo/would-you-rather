@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { handleAddQuestionAnswer } from '../actions/questions';
 
 import Loading from './Loading';
 
-function AnswerQuestion({ users, questions, loading, dispatch }) {
-	const { question_id } = useParams();
+function AnswerQuestion({ author, question, loading, dispatch }) {
 	const OPTION_ONE = 'optionOne';
 	const OPTION_TWO = 'optionTwo';
 	const [ radioValue, setRadioValue ] = useState(OPTION_ONE);
@@ -15,12 +13,9 @@ function AnswerQuestion({ users, questions, loading, dispatch }) {
 		return <Loading />;
 	}
 
-	if (!(question_id in questions)) {
+	if (question == null) {
 		return <p>Question does not exist</p>;
 	}
-
-	const question = questions[question_id];
-	const author = users[question['author']];
 
 	return (
 		<div className="card" style={{ padding: '20px' }}>
@@ -68,12 +63,22 @@ function AnswerQuestion({ users, questions, loading, dispatch }) {
 	);
 }
 
-function mapStateToProps({ authedUser, users, questions }) {
+function mapStateToProps({ authedUser, users, questions }, { match }) {
+	const loading = authedUser === null;
+	if (loading) return { loading };
+
+	const question_id = match.params.question_id;
+	if (!(question_id in questions)) {
+		return {};
+	}
+
+	const question = questions[question_id];
 	return {
 		authedUser,
 		users,
 		questions,
-		loading: authedUser === null
+		author: users[question['author']],
+		question
 	};
 }
 
