@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import { handleAddQuestionAnswer } from '../actions/questions';
 
 import Loading from './Loading';
+import QuestionBalloon from './QuestionBalloon';
 
 function AnswerQuestion({ author, question, loading, dispatch }) {
 	const OPTION_ONE = 'optionOne';
@@ -15,17 +15,7 @@ function AnswerQuestion({ author, question, loading, dispatch }) {
 
 	return (
 		<div className="card" style={{ padding: '20px' }}>
-			<div>
-				<div className="avatar">
-					<img src={author.avatarURL} alt="avatar" width="256" height="256" />
-				</div>
-				<div style={{ padding: '20px' }}>
-					<p className="nes-balloon from-left nes-pointer" style={{ fontSize: '125%' }}>
-						@{author['name']}: Would you rather...
-					</p>
-				</div>
-			</div>
-
+			<QuestionBalloon author={author} />
 			<div>
 				<div style={{ fontSize: '150%' }}>
 					<label>
