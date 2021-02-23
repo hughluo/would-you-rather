@@ -4,20 +4,17 @@ import { connect } from 'react-redux';
 import Question from './Question';
 import ToggleQuestionList from './ToggleQuestionList';
 
-export const UNANSWERED = 'UNANSWERED';
-export const ANSWERED = 'ANSWERED';
-
 function QuestionList({ authedUser, questions, categorisedQuesitons }) {
 	const [ answeredQuestions, unAnsweredQuestions ] = categorisedQuesitons;
-	const [ toggleValue, setToggleValue ] = useState(UNANSWERED);
+	const [ showAnswered, setShowAnswered ] = useState(false);
 
 	return (
 		<div className="container">
 			<div className="columns">
 				<div className="column is-three-fifths is-offset-one-fifth">
-					<ToggleQuestionList toggleValue={toggleValue} setToggleValue={setToggleValue} />
+					<ToggleQuestionList showAnswered={showAnswered} setShowAnswered={setShowAnswered} />
 					<ul>
-						{Object.keys(toggleValue === UNANSWERED ? unAnsweredQuestions : answeredQuestions).map((id) => (
+						{Object.keys(showAnswered ? answeredQuestions : unAnsweredQuestions).map((id) => (
 							<li key={id}>
 								<Question question={questions[id]} />
 							</li>
