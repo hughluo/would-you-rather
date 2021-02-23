@@ -13,10 +13,6 @@ function AnswerQuestion({ author, question, loading, dispatch }) {
 		return <Loading />;
 	}
 
-	if (question == null) {
-		return <p>Question does not exist</p>;
-	}
-
 	return (
 		<div className="card" style={{ padding: '20px' }}>
 			<div>
@@ -63,23 +59,4 @@ function AnswerQuestion({ author, question, loading, dispatch }) {
 	);
 }
 
-function mapStateToProps({ authedUser, users, questions }, { match }) {
-	const loading = authedUser === null;
-	if (loading) return { loading };
-
-	const question_id = match.params.question_id;
-	if (!(question_id in questions)) {
-		return {};
-	}
-
-	const question = questions[question_id];
-	return {
-		authedUser,
-		users,
-		questions,
-		author: users[question['author']],
-		question
-	};
-}
-
-export default connect(mapStateToProps)(AnswerQuestion);
+export default AnswerQuestion;

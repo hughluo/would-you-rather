@@ -9,6 +9,7 @@ import QuestionList from './QuestionList';
 import AnswerQuestion from './AnswerQuestion';
 import Navbar from './Navbar';
 import Tab from './Tab';
+import QuestionDetail from './QuestionDetail';
 
 class App extends Component {
 	componentDidMount() {
@@ -28,7 +29,7 @@ class App extends Component {
 						<div>
 							<Switch>
 								<Route path={'/'} exact component={QuestionList} />
-								<Route path={'/questions/:question_id'} component={AnswerQuestion} />
+								<Route path={'/questions/:question_id'} component={QuestionDetail} />
 							</Switch>
 						</div>
 					</div>
