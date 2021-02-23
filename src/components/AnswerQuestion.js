@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { handleAddQuestionAnswer } from '../actions/questions';
 
 import Loading from './Loading';
 
-function QuestionPoll({ users, questions, loading }) {
+function AnswerQuestion({ users, questions, loading, dispatch }) {
 	const { question_id } = useParams();
 	const OPTION_ONE = 'optionOne';
 	const OPTION_TWO = 'optionTwo';
@@ -76,4 +77,4 @@ function mapStateToProps({ authedUser, users, questions }) {
 	};
 }
 
-export default connect(mapStateToProps)(QuestionPoll);
+export default connect(mapStateToProps)(AnswerQuestion);
