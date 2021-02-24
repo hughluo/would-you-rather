@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function Navbar() {
 	return (
 		<div>
@@ -5,10 +7,11 @@ function Navbar() {
 				<div className="navbar-end">
 					<div className="navbar-item">
 						<div className="buttons">
-							<a className="button nes-btn is-primary">
-								<strong>Sign up</strong>
-							</a>
-							<a className="button nes-btn is-light">Log in</a>
+							<Link to={'/login'}>
+								<button className="nes-btn is-primary">
+									<strong>Login</strong>
+								</button>
+							</Link>
 						</div>
 					</div>
 				</div>
