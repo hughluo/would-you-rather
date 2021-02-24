@@ -5,6 +5,7 @@ import LoadingBar from 'react-redux-loading';
 
 import { handleInitialData } from '../actions/shared';
 
+import Login from './Login';
 import QuestionList from './QuestionList';
 import AnswerQuestion from './AnswerQuestion';
 import Navbar from './Navbar';
@@ -19,15 +20,16 @@ class App extends Component {
 		return (
 			<Router>
 				<Fragment>
-					<LoadingBar
-						className="nes-progress is-primary"
-						style={{ backgroundColor: 'red', height: '2px', zIndex: 999, position: 'absolute' }}
-					/>
 					<div className="container">
+						<LoadingBar
+							className="nes-progress is-primary"
+							style={{ backgroundColor: 'red', height: '2px', zIndex: 999, position: 'absolute' }}
+						/>
 						<Navbar />
 						<Tab />
 						<div>
 							<Switch>
+								<Route path={'/login'} exact component={Login} />
 								<Route path={'/'} exact component={QuestionList} />
 								<Route path={'/questions/:question_id'} component={QuestionDetail} />
 							</Switch>
@@ -39,7 +41,7 @@ class App extends Component {
 	}
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
 	return {
 		loading: authedUser === null
 	};

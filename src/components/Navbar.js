@@ -1,17 +1,31 @@
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-function Navbar() {
+function Navbar({ currUser }) {
 	return (
-		<div>
-			<nav className="navbar" role="navigation" aria-label="main navigation">
+		<div className="container">
+			<nav className="navbar" role="navigation" aria-label="main navigation" style={{ height: '50px' }}>
 				<div className="navbar-end">
 					<div className="navbar-item">
 						<div className="buttons">
-							<Link to={'/login'}>
-								<button className="nes-btn is-primary">
-									<strong>Login</strong>
-								</button>
-							</Link>
+							{currUser ? (
+								<div>
+									<Link to={'/login'} style={{ textDecoration: 'none' }}>
+										<div className="columns">
+											<img src={currUser.avatarURL} />
+											<strong> {currUser.id}</strong>
+										</div>
+									</Link>
+								</div>
+							) : (
+								<div>
+									<Link to={'/login'}>
+										<button className="nes-btn is-primary">
+											<strong>Login</strong>
+										</button>
+									</Link>
+								</div>
+							)}
 						</div>
 					</div>
 				</div>
@@ -20,4 +34,10 @@ function Navbar() {
 	);
 }
 
-export default Navbar;
+function mapStateToProps({ authedUser, users }) {
+	return {
+		currUser: users[authedUser]
+	};
+}
+
+export default connect(mapStateToProps)(Navbar);
