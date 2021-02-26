@@ -1,12 +1,8 @@
 import { connect } from 'react-redux';
 
-import Loading from './Loading';
 import LeaderboardCard from './LeaderboardCard';
 
-function Leaderboard({ loading, userList, userToCreatedQuestionAmountDict, userToAnsweredQuestionAmountDict }) {
-	if (loading) {
-		return <Loading />;
-	}
+function Leaderboard({ userList, userToCreatedQuestionAmountDict, userToAnsweredQuestionAmountDict }) {
 	return (
 		<div className="container">
 			{userList.map((user) => (
@@ -49,7 +45,6 @@ function mapStateToProps({ authedUser, users, questions }) {
 	);
 
 	return {
-		loading: authedUser === null,
 		userList,
 		userToCreatedQuestionAmountDict,
 		userToAnsweredQuestionAmountDict

@@ -1,18 +1,11 @@
 import { connect } from 'react-redux';
 
-import Loading from './Loading';
-
-function AddQuestion({ loading, users }) {
-	if (loading) {
-		return <Loading />;
-	}
+function AddQuestion({ authedUser }) {
 	return <div>AddQuestion</div>;
 }
 
-function mapStateToProps({ authedUser, users }) {
-	return {
-		loading: authedUser === null
-	};
+function mapStateToProps({ authedUser }) {
+	return { authedUser };
 }
 
 export default connect(mapStateToProps)(AddQuestion);
