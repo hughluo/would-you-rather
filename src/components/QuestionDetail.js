@@ -20,7 +20,7 @@ function QuestionDetail({ loading, authedUser, author, question, answered, dispa
 	return (
 		<div>
 			{answered ? (
-				<QuestionPoll question={question} author={author} />
+				<QuestionPoll question={question} author={author} authedUser={authedUser} />
 			) : (
 				<AnswerQuestion question={question} author={author} dispatch={dispatch} />
 			)}
