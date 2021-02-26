@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import AnswerQuestion from './AnswerQuestion';
 import QuestionPoll from './QuestionPoll';
 
-function QuestionDetail({ loading, autheUser, author, question, answered }) {
+function QuestionDetail({ loading, autheUser, author, question, answered, dispatch }) {
 	if (loading) {
 		return <p>Loading...</p>;
 	}
@@ -17,7 +17,7 @@ function QuestionDetail({ loading, autheUser, author, question, answered }) {
 			{answered ? (
 				<QuestionPoll question={question} author={author} />
 			) : (
-				<AnswerQuestion question={question} author={author} />
+				<AnswerQuestion question={question} author={author} dispatch={dispatch} />
 			)}
 		</div>
 	);

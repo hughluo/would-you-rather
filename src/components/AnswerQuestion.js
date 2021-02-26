@@ -9,6 +9,10 @@ function AnswerQuestion({ author, question, loading, dispatch }) {
 	const OPTION_TWO = 'optionTwo';
 	const [ radioValue, setRadioValue ] = useState(OPTION_ONE);
 
+	const handleSubmit = (e) => {
+		dispatch(handleAddQuestionAnswer(question.id, radioValue));
+	};
+
 	if (loading) {
 		return <Loading />;
 	}
@@ -43,7 +47,9 @@ function AnswerQuestion({ author, question, loading, dispatch }) {
 				</div>
 			</div>
 			<div className="container">
-				<button className="nes-btn is-success">Submit</button>
+				<button className="nes-btn is-success" onClick={handleSubmit}>
+					Submit
+				</button>
 			</div>
 		</div>
 	);
