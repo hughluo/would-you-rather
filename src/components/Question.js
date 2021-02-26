@@ -1,16 +1,7 @@
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Loading from './Loading';
-
 function Question({ question, author, loading }) {
-	if (loading) {
-		return (
-			<div>
-				<Loading />
-			</div>
-		);
-	}
 	if (question === null || author === null) {
 		return <p>This question doesn't exist</p>;
 	}
@@ -51,8 +42,7 @@ function mapStateToProps({ users, authedUser }, { question }) {
 	return {
 		author: users[question['author']],
 		authedUser,
-		question,
-		loading: authedUser === null
+		question
 	};
 }
 
