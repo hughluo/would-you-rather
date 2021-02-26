@@ -1,5 +1,53 @@
-function Leaderboard() {
-	return <div>Leaderboard</div>;
+import { connect } from 'react-redux';
+
+import Loading from './Loading';
+import LeaderboardCard from './LeaderboardCard';
+
+function Leaderboard({ loading, userList, userToCreatedQuestionAmountDict, userToAnsweredQuestionAmountDict }) {
+	if (loading) {
+		return <Loading />;
+	}
+	return (
+		<div>
+			{userList.map((user) => (
+				<LeaderboardCard
+					key={user.id}
+					user={user}
+					createdQuestionAmount={userToCreatedQuestionAmountDict[user.id]}
+					answeredQuestionAmount={userToAnsweredQuestionAmountDict[user.id]}
+				/>
+			))}
+		</div>
+	);
 }
 
-export default Leaderboard;
+function mapStateToProps({ authedUser, users, questions }) {
+	let userToCreatedQuestionAmountDict = {};
+	let userToAnsweredQuestionAmountDict = {};
+
+	for (const q of Object.values(questions)) {
+		if (q.author in userToCreatedQuestionAmountDict) {
+			userToCreatedQuestionAmountDict[q.author] += 1;
+		} else {
+			userToCreatedQuestionAmountDict[q.author] = 1;
+		}
+		for (const v of [ ...q.optionOne.votes, ...q.optionTwo.votes ]) {
+			if (v in userToAnsweredQuestionAmountDict) {
+				userToAnsweredQuestionAmountDict[v] += 1;
+			} else {
+				userToAnsweredQuestionAmountDict[v] = 1;
+			}
+		}
+	}
+
+	console.log(userToAnsweredQuestionAmountDict);
+
+	return {
+		loading: authedUser === null,
+		userList: Object.values(users),
+		userToCreatedQuestionAmountDict,
+		userToAnsweredQuestionAmountDict
+	};
+}
+
+export default connect(mapStateToProps)(Leaderboard);
