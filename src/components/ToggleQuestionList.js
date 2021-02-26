@@ -1,9 +1,18 @@
 function ToggleQuestionList({ showAnswered, setShowAnswered }) {
+	const handleOnClick = (e, answered) => {
+		e.preventDefault();
+		setShowAnswered(answered);
+	};
 	return (
 		<div className="tabs is-toggle is-fullwidth">
 			<ul>
 				<li className={showAnswered ? '' : 'is-active'}>
-					<a onClick={() => setShowAnswered(false)}>
+					<a
+						onClick={(e) => handleOnClick(e, false)}
+						value={false}
+						href="/"
+						style={{ textDecoration: 'none' }}
+					>
 						<span className="icon is-small">
 							<i className="fas fa-music" aria-hidden="true" />
 						</span>
@@ -11,7 +20,7 @@ function ToggleQuestionList({ showAnswered, setShowAnswered }) {
 					</a>
 				</li>
 				<li className={showAnswered ? 'is-active' : ''}>
-					<a onClick={() => setShowAnswered(true)}>
+					<a onClick={(e) => handleOnClick(e, true)} value={true} href="/" style={{ textDecoration: 'none' }}>
 						<span className="icon is-small">
 							<i className="fas fa-image" aria-hidden="true" />
 						</span>

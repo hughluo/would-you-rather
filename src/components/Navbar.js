@@ -22,7 +22,7 @@ function Navbar({ currUser, dispatch }) {
 											textDecoration: 'none'
 										}}
 									>
-										<img src={currUser.avatarURL} />
+										<img src={currUser.avatarURL} alt="avatar" />
 										<strong> {currUser.id}</strong>
 									</button>
 									<button className="nes-btn is-warning" onClick={handleLogout}>

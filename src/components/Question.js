@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -22,7 +21,7 @@ function Question({ question, author, loading }) {
 					<div className="media">
 						<div className="media-left">
 							<figure className="image is-96x96">
-								<img src={author['avatarURL']} alt="Placeholder image" />
+								<img src={author['avatarURL']} alt="avatar" />
 							</figure>
 						</div>
 						<div className="media-content">

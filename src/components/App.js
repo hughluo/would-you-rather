@@ -7,7 +7,6 @@ import { handleInitialData } from '../actions/shared';
 
 import Login from './Login';
 import QuestionList from './QuestionList';
-import AnswerQuestion from './AnswerQuestion';
 import Navbar from './Navbar';
 import Tab from './Tab';
 import QuestionDetail from './QuestionDetail';
