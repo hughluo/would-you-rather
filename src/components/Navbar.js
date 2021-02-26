@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-function Navbar({ currUser }) {
+import { setAuthedUser } from '../actions/authedUser';
+
+function Navbar({ currUser, dispatch }) {
+	const handleLogout = () => {
+		dispatch(setAuthedUser('guest'));
+	};
 	return (
 		<div className="container">
 			<nav className="navbar" role="navigation" aria-label="main navigation" style={{ height: '50px' }}>
@@ -9,13 +14,20 @@ function Navbar({ currUser }) {
 					<div className="navbar-item">
 						<div className="buttons">
 							{currUser ? (
-								<div>
-									<Link to={'/login'} style={{ textDecoration: 'none' }}>
-										<div className="columns">
-											<img src={currUser.avatarURL} />
-											<strong> {currUser.id}</strong>
-										</div>
-									</Link>
+								<div className="columns">
+									<button
+										disabled
+										style={{
+											border: 'none',
+											textDecoration: 'none'
+										}}
+									>
+										<img src={currUser.avatarURL} />
+										<strong> {currUser.id}</strong>
+									</button>
+									<button className="nes-btn is-warning" onClick={handleLogout}>
+										<strong>Logout</strong>
+									</button>
 								</div>
 							) : (
 								<div>

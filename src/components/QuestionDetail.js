@@ -1,15 +1,20 @@
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import AnswerQuestion from './AnswerQuestion';
 import QuestionPoll from './QuestionPoll';
 
-function QuestionDetail({ loading, autheUser, author, question, answered, dispatch }) {
+function QuestionDetail({ loading, authedUser, author, question, answered, dispatch }) {
 	if (loading) {
 		return <p>Loading...</p>;
 	}
 
 	if (question == null) {
 		return <p>Question does not exist</p>;
+	}
+
+	if (authedUser === 'guest') {
+		return <Redirect to="/login" />;
 	}
 
 	return (

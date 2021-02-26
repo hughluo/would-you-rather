@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { handleAddQuestionAnswer } from '../actions/questions';
 
 import Loading from './Loading';
