@@ -8,7 +8,7 @@ function Leaderboard({ loading, userList, userToCreatedQuestionAmountDict, userT
 		return <Loading />;
 	}
 	return (
-		<div>
+		<div className="container">
 			{userList.map((user) => (
 				<LeaderboardCard
 					key={user.id}
@@ -40,11 +40,17 @@ function mapStateToProps({ authedUser, users, questions }) {
 		}
 	}
 
-	console.log(userToAnsweredQuestionAmountDict);
+	let userList = Object.values(users).sort(
+		(a, b) =>
+			userToCreatedQuestionAmountDict[b.id] +
+			userToAnsweredQuestionAmountDict[b.id] -
+			userToCreatedQuestionAmountDict[a.id] -
+			userToAnsweredQuestionAmountDict[a.id]
+	);
 
 	return {
 		loading: authedUser === null,
-		userList: Object.values(users),
+		userList,
 		userToCreatedQuestionAmountDict,
 		userToAnsweredQuestionAmountDict
 	};
