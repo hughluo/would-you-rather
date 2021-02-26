@@ -15,7 +15,8 @@ import AddQuestion from './AddQuestion';
 
 class App extends Component {
 	componentDidMount() {
-		this.props.dispatch(handleInitialData());
+		const { dispatch } = this.props;
+		dispatch(handleInitialData());
 	}
 	render() {
 		return (
@@ -45,9 +46,7 @@ class App extends Component {
 }
 
 function mapStateToProps({ authedUser, users }) {
-	return {
-		loading: authedUser === null
-	};
+	return {};
 }
 
 export default connect(mapStateToProps)(App);
