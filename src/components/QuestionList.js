@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Question from './Question';
 import ToggleQuestionList from './ToggleQuestionList';
 
-function QuestionList({ authedUser, questions, categorisedQuesitons }) {
+function QuestionList({ categorisedQuesitons }) {
 	const [ answeredQuestions, unAnsweredQuestions ] = categorisedQuesitons;
 	const [ showAnswered, setShowAnswered ] = useState(false);
 
@@ -14,9 +14,9 @@ function QuestionList({ authedUser, questions, categorisedQuesitons }) {
 				<div className="column is-three-fifths is-offset-one-fifth">
 					<ToggleQuestionList showAnswered={showAnswered} setShowAnswered={setShowAnswered} />
 					<ul>
-						{Object.keys(showAnswered ? answeredQuestions : unAnsweredQuestions).map((id) => (
-							<li key={id}>
-								<Question question={questions[id]} />
+						{(showAnswered ? answeredQuestions : unAnsweredQuestions).map((q) => (
+							<li key={q.id}>
+								<Question question={q} />
 							</li>
 						))}
 					</ul>
@@ -27,23 +27,23 @@ function QuestionList({ authedUser, questions, categorisedQuesitons }) {
 }
 
 function categorisedQuesitons(questions, authedUser) {
-	let answeredQuestions = {};
-	let unAnsweredQuestions = {};
+	let answeredQuestions = [];
+	let unAnsweredQuestions = [];
 	for (const id in questions) {
 		const q = questions[id];
 		if (q.optionOne.votes.includes(authedUser) || q.optionTwo.votes.includes(authedUser)) {
-			answeredQuestions[id] = q;
+			answeredQuestions.push(q);
 		} else {
-			unAnsweredQuestions[id] = q;
+			unAnsweredQuestions.push(q);
 		}
 	}
+	answeredQuestions.sort((a, b) => b.timestamp - a.timestamp);
+	unAnsweredQuestions.sort((a, b) => b.timestamp - a.timestamp);
 	return [ answeredQuestions, unAnsweredQuestions ];
 }
 
 function mapStateToProps({ authedUser, questions }) {
 	return {
-		authedUser,
-		questions,
 		categorisedQuesitons: categorisedQuesitons(questions, authedUser)
 	};
 }
