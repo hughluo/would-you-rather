@@ -40,8 +40,8 @@ function AddQuestion({ authedUser, dispatch }) {
 						<br />
 						<input
 							type="text"
-							id="name_field"
-							class="nes-input"
+							id="optionOne"
+							className="nes-input"
 							value={optionOneInput}
 							onChange={(e) => setOptionOneInput(e.target.value)}
 						/>
@@ -52,8 +52,8 @@ function AddQuestion({ authedUser, dispatch }) {
 						<br />
 						<input
 							type="text"
-							id="name_field"
-							class="nes-input"
+							id="optionTwo"
+							className="nes-input"
 							value={optionTwoInput}
 							onChange={(e) => setOptionTwoInput(e.target.value)}
 						/>

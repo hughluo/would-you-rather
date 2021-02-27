@@ -16,14 +16,14 @@ function QuestionPoll({ author, question, authedUser }) {
 				<div className="nes-container with-title">
 					<p className="title">Result</p>
 					<div>
-						<span className={authedUserVoteForOptionOne ? 'nes-text is-primary' : ''}>
+						<span className={authedUserVoteForOptionOne ? 'nes-text is-success' : ''}>
 							{optionOnePercentage.toFixed(2)}% folks choose to {question.optionOne.text}
 							{authedUserVoteForOptionOne ? ' (You voted for this)' : ''}
 						</span>
 						<progress className="nes-progress is-primary" value={optionOnePercentage} max="100" />
 					</div>
 					<div>
-						<span className={authedUserVoteForOptionOne ? '' : 'nes-text is-primary'}>
+						<span className={authedUserVoteForOptionOne ? '' : 'nes-text is-success'}>
 							{optionTwoPercentage.toFixed(2)}% folks choose to {question.optionTwo.text}
 							{authedUserVoteForOptionOne ? '' : ' (You voted for this)'}
 						</span>
