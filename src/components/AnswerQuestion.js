@@ -28,7 +28,7 @@ function AnswerQuestion({ author, question, loading, dispatch }) {
 							className="nes-radio"
 							name="answer"
 							checked={radioValue === OPTION_ONE}
-							onChange={() => setRadioValue(OPTION_ONE)}
+							onChange={() => setRadioValue(() => OPTION_ONE)}
 						/>
 						<span>{question[OPTION_ONE]['text']}</span>
 					</label>
@@ -40,7 +40,7 @@ function AnswerQuestion({ author, question, loading, dispatch }) {
 							className="nes-radio"
 							name="answer"
 							checked={radioValue === OPTION_TWO}
-							onChange={() => setRadioValue(OPTION_TWO)}
+							onChange={() => setRadioValue(() => OPTION_TWO)}
 						/>
 						<span>{question[OPTION_TWO]['text']}</span>
 					</label>

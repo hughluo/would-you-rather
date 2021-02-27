@@ -1,7 +1,7 @@
 function ToggleQuestionList({ showAnswered, setShowAnswered }) {
 	const handleOnClick = (e, answered) => {
 		e.preventDefault();
-		setShowAnswered(answered);
+		setShowAnswered(() => answered);
 	};
 	return (
 		<div className="tabs is-toggle is-fullwidth">
