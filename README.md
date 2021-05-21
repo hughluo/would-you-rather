@@ -3,7 +3,7 @@
 This is a React + Redux application I build for online polling also known as "would you rather".
 
 
-It help people to conduct online polling in an easy and amusing way. I am really fascinated by how easy to build modern front-end application by using React and Redux.
+It helps people to conduct online polling in an easy and amusing way. I am really fascinated by how easy to build modern front-end application by using React and Redux.
 
 The Demo is available at https://would-you-rather.wexort.com
 
